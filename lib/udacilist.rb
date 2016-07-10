@@ -21,17 +21,27 @@ class UdaciList
       @items.push EventItem.new(type, description, options) 
     elsif type == "link"
       @items.push LinkItem.new(type, description, options) 
+    elsif type == "reminder"
+      @items.push ReminderItem.new(type, description)   
     else
       raise UdaciListErrors::InvalidItemType 
     end  
   end
 
-  def delete(index)
-    if index > @items.length
-      raise UdaciListErrors::IndexExceedsListSize 
-    else  
-      @items.delete_at(index - 1)
-    end  
+  def delete(index_list)
+    count = 1
+    index_list.each do |index|
+      if index > @items.length
+        raise UdaciListErrors::IndexExceedsListSize 
+      else  
+        if count == 1
+          @items.delete_at(index - 1)
+        else
+          @items.delete_at(index - 2)  
+        end  
+      end 
+      count += 1 
+    end 
   end
 
   def all
@@ -45,7 +55,7 @@ class UdaciList
   end
 
   def filter(list_type)
-    @items.select!{|item| item.type == "#{list_type}"}
+    filtered_list = @items.select!{|item| item.type == "#{list_type}"}
     if @items.length == 0
       puts "There are no items under that list type."
     else
