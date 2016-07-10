@@ -1,13 +1,24 @@
 # What you added to Udacitask 2.0
 # -------------------------------------------------------
 1. What is the gem of your choice and how did you use it?
+The gem of my choice was terminal-table.  I used it to output the lists in a table on the console.  Makes the lists easier to read.
+
 2. Describe the 2 features you added to the project.
-  a) Feature 1...
-  b) Feature 2...
+  a) I added a “reminder” list type.  
+  b) I also added the ability to delete multiple list items at one time.
+
 
 # REFLECTIONS
 # -------------------------------------------------------
 1. How long did you spend working on this project?
+Took about 8 hours.
+
 2. What was the most rewarding challenge you conquered?
+Learning about the Gemfile.  It’s a great feature because almost all apps regardless of language have dependencies.  It was nice to see how elegantly Ruby handles it.
+
 3. What two additional features did you build? Why?
+- I added a “reminder” list type because personally I always have reminder lists myself.
+- I added the ability to delete multiple list items at once.  That is also a very useful feature.
+
 4. Where do you still have room to grow?
+I need deeper understanding of concepts.
