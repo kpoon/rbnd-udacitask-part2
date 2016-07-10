@@ -15,12 +15,12 @@ class UdaciList
       if priority != nil and priority != "low" and priority != "high" and priority != "medium"
         raise UdaciListErrors::InvalidPriorityValue
       else   
-        @items.push TodoItem.new(description, options) 
+        @items.push TodoItem.new(type, description, options) 
       end
     elsif type == "event"
-      @items.push EventItem.new(description, options) 
+      @items.push EventItem.new(type, description, options) 
     elsif type == "link"
-      @items.push LinkItem.new(description, options) 
+      @items.push LinkItem.new(type, description, options) 
     else
       raise UdaciListErrors::InvalidItemType 
     end  
@@ -35,12 +35,23 @@ class UdaciList
   end
 
   def all
-    puts "-" * @title.length
     puts @title
-    puts "-" * @title.length
+    rows = []
     @items.each_with_index do |item, position|
-      puts "#{position + 1}) #{item.details}"
+      rows << [position + 1, item.details]
     end
+    table = Terminal::Table.new :rows => rows
+    puts table
   end
+
+  def filter(list_type)
+    @items.select!{|item| item.type == "#{list_type}"}
+    if @items.length == 0
+      puts "There are no items under that list type."
+    else
+      self.all
+    end  
+    
+  end  
 
 end

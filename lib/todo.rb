@@ -1,12 +1,12 @@
 class TodoItem
   include Listable
 
-  attr_reader :description, :due, :priority
+  attr_reader :description, :due, :priority, :type
 
-  def initialize(description, options={})
+  def initialize(type, description, options={})
     @description = description
+    @type = type
     
-    # @due = options[:due] ? Date.parse(options[:due]) : options[:due]
     due_date = options[:due]
     if due_date == nil
       @due = options[:due]
@@ -20,6 +20,7 @@ class TodoItem
   end
 
   def details
+    @type + " - " +
     format_description(@description) + "due: " +
     format_date(date_type: "todo", due: @due) +
     format_priority(@priority)
