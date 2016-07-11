@@ -20,8 +20,7 @@ list.add("event", "Birthday Party", start_date: "2016-05-08")
 list.add("event", "Vacation", start_date: "2016-05-28", end_date: "2016-05-31")
 list.add("link", "https://github.com", site_name: "GitHub Homepage")
 list.all
-my_var = [3]
-list.delete(my_var)
+list.delete(3)
 list.all
 
 # SHOULD CREATE AN UNTITLED LIST AND ADD ITEMS TO IT
